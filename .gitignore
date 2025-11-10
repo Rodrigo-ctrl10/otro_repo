@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Artefactos del proyecto
+mlruns/
+trabajo_mlflow/
+models/
+data/
+*.dvc
+.dvc/cache/
+
+# IDEs
+.vscode/
+.idea/
