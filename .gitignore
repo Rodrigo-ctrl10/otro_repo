@@ -1,15 +1,25 @@
+# ── Python
 .venv/
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
 
-# Artefactos del proyecto
+# ── MLflow (local tracking)
 mlruns/
 trabajo_mlflow/
-models/
-data/
-*.dvc
-.dvc/cache/
 
-# IDEs
+# ── DVC
+# ¡No ignores los metadatos de DVC!
+!.dvc/
+!.dvcignore
+.dvc/cache/
+.dvc/tmp/
+
+# Ignora el contenido pesado que administra DVC
+# (DVC creará *.dvc que sí van a Git)
+data/
+models/
+
+# ── IDEs
 .vscode/
 .idea/
