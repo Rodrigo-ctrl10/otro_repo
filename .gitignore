@@ -1,25 +1,29 @@
-# ── Python
+# Entorno/bytecode
 .venv/
 __pycache__/
-*.py[cod]
-*.egg-info/
+*.pyc
 
-# ── MLflow (local tracking)
+# Artefactos MLflow (no versionar)
 mlruns/
 trabajo_mlflow/
 
-# ── DVC
-# ¡No ignores los metadatos de DVC!
+# Ignora datos y modelos grandes...
+data/**
+models/**
+
+# ...pero PERMITE los punteros .dvc y las carpetas
+!data/
+!models/
+!*.dvc
+
+# DVC internals: mantenerlos en git
 !.dvc/
 !.dvcignore
+
+# Ignora solo el cache de DVC
 .dvc/cache/
 .dvc/tmp/
 
-# Ignora el contenido pesado que administra DVC
-# (DVC creará *.dvc que sí van a Git)
-data/
-models/
-
-# ── IDEs
+# IDE
 .vscode/
 .idea/
