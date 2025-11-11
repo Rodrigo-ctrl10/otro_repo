@@ -1,0 +1,32 @@
+stages:
+  preprocess:
+    cmd: python src\preprocessing.py
+    deps:
+      - src\preprocessing.py
+      - data\raw\Data_CU_venta.csv
+    outs:
+      - data\processed\train.csv
+      - data\processed\valid.csv
+      - data\processed\test.csv
+
+  train:
+    cmd: python src\train.py
+    deps:
+      - src\train.py
+      - data\processed\train.csv
+      - data\processed\valid.csv
+      - data\processed\test.csv
+    outs:
+      - models\xgb_model.json
+      - models\xgb_model.pkl
+
+  drift:
+    cmd: python src\monitor_drift.py
+    deps:
+      - src\monitor_drift.py
+      - data\processed\train.csv
+      - data\processed\valid.csv
+      - data\processed\test.csv
+    outs:
+      - models\drift_valid_vs_train.csv
+      - models\drift_test_vs_train.csv
