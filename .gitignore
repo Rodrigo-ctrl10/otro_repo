@@ -1,30 +1,9 @@
-# Entorno/bytecode
+# Entorno virtual
 .venv/
+
+# Archivos de caché de Python
 __pycache__/
 *.pyc
 
-# Artefactos MLflow (no versionar)
+# Archivos de MLflow
 mlruns/
-trabajo_mlflow/
-
-# Ignora datos y modelos grandes...
-data/**
-models/**
-
-# ...pero PERMITE los punteros .dvc y las carpetas
-!data/
-!models/
-!*.dvc
-
-# DVC internals: mantenerlos en git
-!.dvc/
-!.dvcignore
-
-# Ignora solo el cache de DVC
-.dvc/cache/
-.dvc/tmp/
-
-# IDE
-.vscode/
-.idea/
-/models
