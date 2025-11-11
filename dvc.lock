@@ -1,0 +1,79 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src\preprocessing.py
+    deps:
+    - path: data\raw\Data_CU_venta.csv
+      hash: md5
+      md5: fdd106a1c6d2b3d1233a5b5527e22dde
+      size: 54525952
+    - path: src\preprocessing.py
+      hash: md5
+      md5: 802b4d87213903c50b00ae0ea5ed18f3
+      size: 4194
+    outs:
+    - path: data\processed\test.csv
+      hash: md5
+      md5: 7060f957f40278113210d0723f813389
+      size: 10050068
+    - path: data\processed\train.csv
+      hash: md5
+      md5: e23457753a494e5a2942335148ce9eb8
+      size: 17387959
+    - path: data\processed\valid.csv
+      hash: md5
+      md5: bef623a6fb5826deb65d8b68cb65ccd6
+      size: 7454318
+  train:
+    cmd: python src\train.py
+    deps:
+    - path: data\processed\test.csv
+      hash: md5
+      md5: 7060f957f40278113210d0723f813389
+      size: 10050068
+    - path: data\processed\train.csv
+      hash: md5
+      md5: e23457753a494e5a2942335148ce9eb8
+      size: 17387959
+    - path: data\processed\valid.csv
+      hash: md5
+      md5: bef623a6fb5826deb65d8b68cb65ccd6
+      size: 7454318
+    - path: src\train.py
+      hash: md5
+      md5: f634bcbcca0332e4bd5583fbfb7693c8
+      size: 3259
+    outs:
+    - path: models\xgb_model.json
+      hash: md5
+      md5: 6b2527350168515ee0989425cb8c82e6
+      size: 2075411
+    - path: models\xgb_model.pkl
+      hash: md5
+      md5: 6d66230957d528d9289c215acca8175a
+      size: 1399642
+  drift:
+    cmd: python src\monitor_drift.py
+    deps:
+    - path: data\processed\test.csv
+      hash: md5
+      md5: 7060f957f40278113210d0723f813389
+      size: 10050068
+    - path: data\processed\train.csv
+      hash: md5
+      md5: e23457753a494e5a2942335148ce9eb8
+      size: 17387959
+    - path: data\processed\valid.csv
+      hash: md5
+      md5: bef623a6fb5826deb65d8b68cb65ccd6
+      size: 7454318
+    - path: src\monitor_drift.py
+      hash: md5
+      md5: b92f61262295398c4963a0381759a626
+      size: 5285
+    outs:
+    - path: models\drift\
+      hash: md5
+      md5: a6f2938ee9e9d6a5dce83b4d7f997da3.dir
+      size: 18440
+      nfiles: 2
