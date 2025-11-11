@@ -1,0 +1,6 @@
+outs:
+- md5: f72bc29f3ebd89317a177e0490163faf.dir
+  size: 34892345
+  nfiles: 3
+  hash: md5
+  path: processed
